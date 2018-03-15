@@ -15,14 +15,14 @@ class Stocks(IEX):
 
         Parameters
         Parameter   Details
-        types   • Required 
-                • Comma delimited list of endpoints to call. The names should match the individual endpoint names. Limited to 10 types.
-        symbols • Optional 
-                • Comma delimited list of symbols limited to 100. This parameter is used only if market option is used .
-        range   • Optional 
-                • Used to specify a chart range if chart is used in types parameter.
-        *   • Optional 
-            • Parameters that are sent to individual endpoints can be specified in batch calls and will be applied to each supporting endpoint.
+        types   - Required 
+                - Comma delimited list of endpoints to call. The names should match the individual endpoint names. Limited to 10 types.
+        symbols - Optional 
+                - Comma delimited list of symbols limited to 100. This parameter is used only if market option is used .
+        range   - Optional 
+                - Used to specify a chart range if chart is used in types parameter.
+        *   - Optional 
+            - Parameters that are sent to individual endpoints can be specified in batch calls and will be applied to each supporting endpoint.
         """
         
         _FUNCTION_KEYS = ("stock", symbol, "batch")
@@ -60,12 +60,12 @@ class Stocks(IEX):
 
         Parameters
         Parameter   Details
-        chartReset  • Optional
-                    • boolean. If true, 1d chart will reset at midnight instead of the default behavior of 9:30am ET.
-        chartSimplify   • Optional
-                        • boolean. If true, runs a polyline simplification using the Douglas-Peucker algorithm. This is useful if plotting sparkline charts.
-        chartInterval   • Optional
-                        • number. If passed, chart data will return every Nth element as defined by chartInterval
+        chartReset  - Optional
+                    - boolean. If true, 1d chart will reset at midnight instead of the default behavior of 9:30am ET.
+        chartSimplify   - Optional
+                        - boolean. If true, runs a polyline simplification using the Douglas-Peucker algorithm. This is useful if plotting sparkline charts.
+        chartInterval   - Optional
+                        - number. If passed, chart data will return every Nth element as defined by chartInterval
         """
 
         if range not in ("5y", "2y", "1y", "ytd", "6m", "3m", "1m", "1d", "dynamic"):
@@ -134,9 +134,8 @@ class Stocks(IEX):
     @IEX._call_api_on_func
     def get_effective_spread(self, symbol):
         """
-        This returns an array of effective spread, eligible volume, and price improvement of a stock, by market. Unlike volume-by-venue, this will only return a venue if effective spread is not ‘N/A’. Values are sorted in descending order by effectiveSpread. Lower effectiveSpread and higher priceImprovement values are generally considered optimal.
-
-        Effective spread is designed to measure marketable orders executed in relation to the market center’s quoted spread and takes into account hidden and midpoint liquidity available at each market center. Effective Spread is calculated by using eligible trade prices recorded to the consolidated tape and comparing those trade prices to the National Best Bid and Offer (“NBBO”) at the time of the execution.
+        This returns an array of effective spread, eligible volume, and price improvement of a stock, by market. Unlike volume-by-venue, this will only return a venue if effective spread is not 'N/A'. Values are sorted in descending order by effectiveSpread. Lower effectiveSpread and higher priceImprovement values are generally considered optimal.
+        Effective spread is designed to measure marketable orders executed in relation to the market center's quoted spread and takes into account hidden and midpoint liquidity available at each market center. Effective Spread is calculated by using eligible trade prices recorded to the consolidated tape and comparing those trade prices to the National Best Bid and Offer ("NBBO") at the time of the execution.
 
         Options
         Symbol
@@ -168,12 +167,12 @@ class Stocks(IEX):
 
     #    Parameters
     #    Parameter   Details
-    #    format  • Parameter is optional
-    #            • Value can be csv or psv
-    #            • When parameter is not present, format defaults to JSON
-    #    token   • Parameter is optional
-    #            • Value is the API token from your IEX user account
-    #            • If you have been permissioned for CUSIP information you’ll receive a CUSIP field, othewise data defaults to exclude CUSIP.
+    #    format  - Parameter is optional
+    #            - Value can be csv or psv
+    #            - When parameter is not present, format defaults to JSON
+    #    token   - Parameter is optional
+    #            - Value is the API token from your IEX user account
+    #            - If you have been permissioned for CUSIP information you'll receive a CUSIP field, othewise data defaults to exclude CUSIP.
     #    """
 
     #    _FUNCTION_KEYS = ("stock", "market", "threshold-securities", date)
@@ -190,12 +189,12 @@ class Stocks(IEX):
 
     #    Parameters
     #    Parameter   Details
-    #    format  • Parameter is optional
-    #            • Value can be csv or psv
-    #            • When parameter is not present, format defaults to JSON
-    #    token   • Parameter is optional
-    #            • Value is the API token from your IEX user account
-    #            • If you have been permissioned for CUSIP information you’ll receive a CUSIP field, othewise data defaults to exclude CUSIP.
+    #    format  - Parameter is optional
+    #            - Value can be csv or psv
+    #            - When parameter is not present, format defaults to JSON
+    #    token   - Parameter is optional
+    #            - Value is the API token from your IEX user account
+    #            - If you have been permissioned for CUSIP information you'll receive a CUSIP field, othewise data defaults to exclude CUSIP.
     #    """
 
     #    _FUNCTION_KEYS = ("stock", "market", "short-interest", date)
@@ -224,8 +223,8 @@ class Stocks(IEX):
 
         Parameters
         Parameter   Details
-        displayPercent  • Optional
-                        • If set to true, all percentage values will be multiplied by a factor of 100 (Ex: /stock/aapl/quote?displayPercent=true)
+        displayPercent  - Optional
+                        - If set to true, all percentage values will be multiplied by a factor of 100 (Ex: /stock/aapl/quote?displayPercent=true)
         """
 
         _FUNCTION_KEYS = ("stock", "market", "list", top)
@@ -319,8 +318,8 @@ class Stocks(IEX):
 
         Parameters
         Parameter   Details
-        displayPercent  • Optional
-                        • If set to true, all percentage values will be multiplied by a factor of 100 (Ex: /stock/aapl/quote?displayPercent=true)
+        displayPercent  - Optional
+                        - If set to true, all percentage values will be multiplied by a factor of 100 (Ex: /stock/aapl/quote?displayPercent=true)
         """
 
         _FUNCTION_KEYS = ("stock", symbol, "quote")

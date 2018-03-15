@@ -12,7 +12,7 @@ except IOError:
 
 setup(
     name='py_iex',
-    version='0.0.1a',
+    version='0.0.2a',
     author='Jerry Chou',
     author_email='jxzym25@gmail.com',
     license='MIT',
@@ -20,7 +20,7 @@ setup(
     long_description=long_description,
     url='https://github.com/jxzym25/py_iex',
     keywords=['iex', 'py_iex', 'stock', 'price', 'finance', 'quotes'],
-    packages=['py_iex'],
+    packages=find_packages(exclude=['test_py_iex']),
     install_requires=[
         'requests',
     ],
