@@ -12,7 +12,7 @@ except IOError:
 
 setup(
     name='py_iex',
-    version='0.0.2a',
+    version='0.0.3',
     author='Jerry Chou',
     author_email='jxzym25@gmail.com',
     license='MIT',

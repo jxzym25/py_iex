@@ -10,7 +10,7 @@ You see all avaialbe APIs in IEX's document https://iextrading.com/developer/doc
 ## Install
 To install the package use:
 ```shell
-pip install py-iex
+pip install py_iex
 ```
 If you want to install from source, then use
 ```shell

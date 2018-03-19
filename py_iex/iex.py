@@ -53,12 +53,6 @@ class IEX(object):
 
         @wraps(func)
         def _call_wrapper(self, *args, **kwargs):
-            used_kwargs = kwargs.copy()
-            # get the used pos arguments given to the function
-            used_kwargs.update(zip(argspec.args[pos:], args[pos:]))
-            # update the dictionary to include the default parameters
-            used_kwargs.update({k: used_kwargs.get(k, d) for k, d in defaults.items()})
-
             function_names = func(self, *args, **kwargs)
             url = "{}/{}".format(IEX._IEX_API_URL, '/'.join(function_names))
 
@@ -67,12 +61,12 @@ class IEX(object):
                 for idx, arg_name in enumerate(argspec.args[1:]):
                     if arg_name in defaults:
                         try:
-                            arg_value = args[idx]
-                        except IndexError:
+                            arg_value = kwargs[arg_name]
+                        except KeyError:
                             arg_value = defaults[arg_name]
                         if arg_value:
                             if isinstance(arg_value, tuple) or isinstance(arg_value, list):
-                                arg_value = ','.join(arg_value)
+                                arg_value = ','.join([str(v) for v in arg_value])
                             url = "{}{}={}&".format(url, arg_name, arg_value)
                 url = url[:-1]
             return self._handle_api_call(url)
