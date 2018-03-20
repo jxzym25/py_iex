@@ -1,3 +1,6 @@
+[![PyPI version](https://badge.fury.io/py/py_iex.svg)](https://badge.fury.io/py/py_iex)
+[![BCH compliance](https://bettercodehub.com/edge/badge/jxzym25/py_iex?branch=master)](https://bettercodehub.com/)
+
 # py_iex
 IEX delivers a free API for real time financial data. The module implements a
 python interface to the free API provided by IEX.
