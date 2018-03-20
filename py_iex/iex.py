@@ -37,38 +37,42 @@ class IEX(object):
         return _retry_wrapper
 
     @classmethod
-    def _call_api_on_func(cls, func):
+    def _get_args(cls, func):
+        """
+        Get the args of the function
+
+        func:   The function to be used
+        """
         argspec = inspect.getargspec(func)
         try:
-            pos = len(argspec.args) - len(argspec.defaults)
             defaults = dict(zip(argspec.args[pos:], argspec.defaults))
         except:
             if argspec.args:
                 # no default
-                pos = len(argspec.args)
                 defaults = {}
             elif argspec.defaults:
-                pos = 0
                 defaults = argspec.defaults
+        return argspec, defaults
+
+    @classmethod
+    def _call_api_on_func(cls, func):
+        argspec, defaults = cls._get_args(func)
 
         @wraps(func)
         def _call_wrapper(self, *args, **kwargs):
             function_names = func(self, *args, **kwargs)
-            url = "{}/{}".format(IEX._IEX_API_URL, '/'.join(function_names))
-
-            if len(argspec) > 1:
-                url = "{}?".format(url)
-                for idx, arg_name in enumerate(argspec.args[1:]):
-                    if arg_name in defaults:
-                        try:
-                            arg_value = kwargs[arg_name]
-                        except KeyError:
-                            arg_value = defaults[arg_name]
-                        if arg_value:
-                            if isinstance(arg_value, tuple) or isinstance(arg_value, list):
-                                arg_value = ','.join([str(v) for v in arg_value])
-                            url = "{}{}={}&".format(url, arg_name, arg_value)
-                url = url[:-1]
+            url = "{}/{}?".format(IEX._IEX_API_URL, '/'.join(function_names))
+            for idx, arg_name in enumerate(argspec.args[1:]):
+                if arg_name in defaults:
+                    try:
+                        arg_value = kwargs[arg_name]
+                    except KeyError:
+                        arg_value = defaults[arg_name]
+                    if arg_value:
+                        if isinstance(arg_value, tuple) or isinstance(arg_value, list):
+                            arg_value = ','.join([str(v) for v in arg_value])
+                        url = "{}{}={}&".format(url, arg_name, arg_value)
+            url = url[:-1]
             return self._handle_api_call(url)
         return _call_wrapper
 
