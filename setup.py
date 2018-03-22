@@ -12,7 +12,7 @@ except IOError:
 
 setup(
     name='py_iex',
-    version='0.0.3',
+    version='0.0.4',
     author='Jerry Chou',
     author_email='jxzym25@gmail.com',
     license='MIT',
@@ -25,7 +25,7 @@ setup(
         'requests',
     ],
     classifiers=[
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
         'Topic :: Office/Business :: Financial :: Investment',
         'License :: OSI Approved :: MIT License',

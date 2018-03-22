@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/jxzym25/py_iex.svg?branch=master)](https://travis-ci.org/jxzym25/py_iex)
 [![PyPI version](https://badge.fury.io/py/py_iex.svg)](https://badge.fury.io/py/py_iex)
 [![BCH compliance](https://bettercodehub.com/edge/badge/jxzym25/py_iex?branch=master)](https://bettercodehub.com/)
 
