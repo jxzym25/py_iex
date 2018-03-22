@@ -7,3 +7,5 @@ python:
   - '3.6'
 install:
   - pip install requests
+script:
+  nosetests --nocapture test_py_iex/test_iex.py
