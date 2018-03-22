@@ -28,7 +28,7 @@ class IEX(object):
         @wraps(func)
         def _retry_wrapper(self, *args, **kwargs):
             error_message = ""
-            for retry in xrange(self.retries + 1):
+            for retry in range(self.retries + 1):
                 try:
                     return func(self, *args, **kwargs)
                 except ValueError as err:
